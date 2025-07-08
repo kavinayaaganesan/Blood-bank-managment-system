@@ -2,13 +2,9 @@
 import sqlite3
 from datetime import datetime
 
-# -----------------------------
-# Database setup
-# -----------------------------
 conn = sqlite3.connect("blood_bank.db")
-cursor = conn.cursor()
-
-# Create tables if not exist
+cursor = conn.cursor(
+    
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS donors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,10 +31,6 @@ for bg in blood_groups:
     cursor.execute("INSERT OR IGNORE INTO blood_stock (blood_group, units_available) VALUES (?, ?)", (bg, 0))
 
 conn.commit()
-
-# -----------------------------
-# Functions
-# -----------------------------
 
 def add_donor():
     name = input("Enter name: ")
@@ -79,10 +71,6 @@ def issue_blood():
         print("✅ Blood issued.")
     else:
         print("❌ Not enough stock.")
-
-# -----------------------------
-# Main Menu
-# -----------------------------
 
 def main():
     while True:
