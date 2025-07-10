@@ -75,10 +75,6 @@ def issue_blood():
     else:
         print("❌ Not enough stock.")
 
-# -----------------------------
-# Main Menu
-# -----------------------------
-
 def main():
     while True:
         print("\n=== Blood Bank Management ===")
