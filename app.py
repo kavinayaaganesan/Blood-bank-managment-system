@@ -1,9 +1,6 @@
 import sqlite3
 from datetime import datetime
 
-# -----------------------------
-# Database setup
-# -----------------------------
 conn = sqlite3.connect("blood_bank.db")
 cursor = conn.cursor()
 
@@ -28,7 +25,6 @@ CREATE TABLE IF NOT EXISTS blood_stock (
 )
 """)
 
-# Initialize stock for all blood groups
 blood_groups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
 for bg in blood_groups:
     cursor.execute("INSERT OR IGNORE INTO blood_stock (blood_group, units_available) VALUES (?, ?)", (bg, 0))
