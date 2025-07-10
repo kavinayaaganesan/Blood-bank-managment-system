@@ -28,12 +28,7 @@ CREATE TABLE IF NOT EXISTS blood_stock (
 blood_groups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
 for bg in blood_groups:
     cursor.execute("INSERT OR IGNORE INTO blood_stock (blood_group, units_available) VALUES (?, ?)", (bg, 0))
-
 conn.commit()
-
-# -----------------------------
-# Functions
-# -----------------------------
 
 def add_donor():
     name = input("Enter name: ")
