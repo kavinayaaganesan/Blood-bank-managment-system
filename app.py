@@ -117,8 +117,7 @@ def main():
         print("6. Exit")
 
         choice = input("Choose an option: ")
-        if choice == "1":
-@@ -102,12 +121,13 @@ def main():
+
         elif choice == "4":
             issue_blood()
         elif choice == "5":
