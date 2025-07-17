@@ -1,14 +1,21 @@
 import sqlite3
 from datetime import datetime
 
+# -----------------------------
+# Database setup
+# -----------------------------
 # Database connection
 conn = sqlite3.connect("blood_bank.db")
 cursor = conn.cursor()
 
+# Create tables if not exist
+cursor = conn.cursor(
+    
 # Create tables if not exists
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS donors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+@@ -36,10 +32,6 @@
     name TEXT,
     age INTEGER,
     gender TEXT,
@@ -27,6 +34,9 @@ CREATE TABLE IF NOT EXISTS blood_stock (
 """)
 conn.commit()
 
+# -----------------------------
+# Functions
+# -----------------------------
 # Utility function
 def is_valid_date(date_str):
     try:
@@ -38,6 +48,8 @@ def is_valid_date(date_str):
 # Add Donor
 def add_donor():
     name = input("Enter name: ")
+    age = int(input("Enter age: "))
+@@ -80,10 +72,6 @@ def issue_blood():
     try:
         age = int(input("Enter age: "))
     except ValueError:
@@ -105,6 +117,9 @@ def issue_blood():
     else:
         print("❌ Not enough stock.")
 
+# -----------------------------
+# Main Menu
+# -----------------------------
 # View Donors
 def view_donors():
     cursor.execute("SELECT id, name, blood_group, last_donation_date FROM donors ORDER BY id DESC")
